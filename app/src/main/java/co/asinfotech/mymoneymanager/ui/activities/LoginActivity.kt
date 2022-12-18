@@ -4,11 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import co.asinfotech.mymoneymanager.config.Config
 import co.asinfotech.mymoneymanager.databinding.ActivityLoginBinding
 import co.asinfotech.mymoneymanager.extensions.showToast
 import co.asinfotech.mymoneymanager.utils.Tracer
+import co.asinfotech.mymoneymanager.utils.utils
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -46,17 +49,43 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.googleButton.setOnClickListener {
+        binding.LAGoogleSignIn.setOnClickListener {
             signIn()
         }
+        binding.LAbtnSignIn.setOnClickListener {
+            validateCredentials()
+        }
+    }
+
+    private fun validateCredentials() {
+        utils.hideKeyboard(this)
+        Tracer.debug(TAG, " validateCredentials ")
+        val email = binding.LAUsername.editText?.text
+        val password = binding.LApassword.editText?.text
+        Tracer.debug(TAG, " validateCredentials $email")
+        Tracer.debug(TAG, " validateCredentials $password")
+        if (email.isNullOrEmpty() || email.isBlank() || email.isEmpty()) {
+            showToast("Please enter email")
+            return
+        }
+        if (password.isNullOrEmpty() || password.isBlank() || password.isEmpty()) {
+            showToast("Please enter password")
+            return
+        }
+        signInWithUsernamePassword(email.toString(), password.toString())
     }
 
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+            navigateToNextActivity()
         }
+
+    }
+
+    private fun navigateToNextActivity() {
+        startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
 
     }
 
@@ -120,6 +149,28 @@ class LoginActivity : AppCompatActivity() {
                     showToast("User signed in ${user?.displayName}")
                 } else {
                     Tracer.debug(TAG, "firebaseAuthWithGoogle:failure ${task.exception}")
+                }
+            }
+    }
+
+    private fun toggleButtonVisibility(visible : Boolean){
+        binding.LApb.visibility = if(!visible) View.VISIBLE else View.GONE
+        binding.LAbtnSignIn.visibility =  if(visible) View.VISIBLE else View.GONE
+    }
+
+    private fun signInWithUsernamePassword(email: String, password: String) {
+        toggleButtonVisibility(false)
+        Tracer.debug(TAG, " signInWithUsernamePassword ")
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                toggleButtonVisibility(true)
+                if (task.isSuccessful) {
+                    Tracer.debug(TAG, " signInWithUsernamePassword:success ")
+                    val user = auth.currentUser
+                    navigateToNextActivity()
+                } else {
+                    Tracer.debug(TAG, " signInWithUsernamePassword:failure ${task.exception}")
+                    showToast("Authentication failed!")
                 }
             }
     }

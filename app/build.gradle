@@ -80,11 +80,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.auth0.android:jwtdecode:2.0.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
-
-
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.airbnb.android:lottie:5.2.0'
+
 
 }
 // Allow references to generated code

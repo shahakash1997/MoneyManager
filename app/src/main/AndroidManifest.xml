@@ -24,6 +24,8 @@
                 android:value="" />
         </activity>
         <activity
+            android:resizeableActivity="true"
+            android:windowSoftInputMode="adjustResize"
             android:name=".ui.activities.LoginActivity"
             android:exported="false" />
         <activity
