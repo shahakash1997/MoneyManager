@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         handler.postDelayed(
             { startActivity(Intent(this@MainActivity, LoginActivity::class.java)) },
-            2000
+            1000
         )
 
     }

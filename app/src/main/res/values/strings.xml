@@ -11,5 +11,11 @@
     <string name="menu_earnings">Earnings</string>
     <string name="menu_savings">Savings</string>
     <string name="menu_expenses">Expenses</string>
+    <string name="title_activity_app_home">AppHomeActivity</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="add_new_entry">Add new Entry</string>
 
 </resources>

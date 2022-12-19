@@ -6,7 +6,7 @@ import androidx.multidex.BuildConfig
 import androidx.room.Room
 import co.asinfotech.mymoneymanager.config.Config
 import co.asinfotech.mymoneymanager.database.AppDatabase
-import co.asinfotech.mymoneymanager.database.dao.TransactionDao
+import co.asinfotech.mymoneymanager.database.dao.DBExpenseDao
 import co.asinfotech.mymoneymanager.network.ApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -77,7 +77,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTransactionDao(appDatabase: AppDatabase): TransactionDao {
-        return appDatabase.transactionDao()
+    fun provideTransactionDao(appDatabase: AppDatabase): DBExpenseDao {
+        return appDatabase.expensesDao()
     }
 }

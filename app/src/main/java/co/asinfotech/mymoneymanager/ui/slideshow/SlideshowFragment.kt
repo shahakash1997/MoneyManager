@@ -1,4 +1,4 @@
-package co.asinfotech.mymoneymanager.ui.fragments.slideshow
+package co.asinfotech.mymoneymanager.ui.slideshow
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package co.asinfotech.mymoneymanager.ui.fragments.gallery
+package co.asinfotech.mymoneymanager.ui.gallery
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -2,15 +2,15 @@ package co.asinfotech.mymoneymanager.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import co.asinfotech.mymoneymanager.database.dao.TransactionDao
-import co.asinfotech.mymoneymanager.database.tables.Transaction
+import co.asinfotech.mymoneymanager.database.dao.DBExpenseDao
+import co.asinfotech.mymoneymanager.database.tables.DbExpense
 
 @Database(
-    entities = [Transaction::class],
+    entities = [DbExpense::class],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun transactionDao(): TransactionDao
+    abstract fun expensesDao(): DBExpenseDao
 }

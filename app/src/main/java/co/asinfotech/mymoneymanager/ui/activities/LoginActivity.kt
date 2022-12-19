@@ -3,16 +3,13 @@ package co.asinfotech.mymoneymanager.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
+import co.asinfotech.mymoneymanager.AppHomeActivity
 import co.asinfotech.mymoneymanager.config.Config
 import co.asinfotech.mymoneymanager.databinding.ActivityLoginBinding
 import co.asinfotech.mymoneymanager.extensions.showToast
 import co.asinfotech.mymoneymanager.utils.Tracer
 import co.asinfotech.mymoneymanager.utils.utils
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -64,11 +61,11 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.LApassword.editText?.text
         Tracer.debug(TAG, " validateCredentials $email")
         Tracer.debug(TAG, " validateCredentials $password")
-        if (email.isNullOrEmpty() || email.isBlank() || email.isEmpty()) {
+        if (utils.isEmpty(email)) {
             showToast("Please enter email")
             return
         }
-        if (password.isNullOrEmpty() || password.isBlank() || password.isEmpty()) {
+        if (utils.isEmpty(password)) {
             showToast("Please enter password")
             return
         }
@@ -85,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToNextActivity() {
-        startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+        startActivity(Intent(this@LoginActivity, AppHomeActivity::class.java))
 
     }
 
