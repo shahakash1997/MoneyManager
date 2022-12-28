@@ -31,15 +31,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.activities.HomeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_home"
-            android:theme="@style/Theme.MyMoneyManager.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ui.activities.LoginActivity"
             android:exported="false"
             android:resizeableActivity="true"

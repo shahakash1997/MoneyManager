@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_expenses">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="co.asinfotech.mymoneymanager.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_expenses"
+        android:name="co.asinfotech.mymoneymanager.ui.fragments.expenses.ExpensesFragment"
+        android:label="@string/menu_expenses"
+        tools:layout="@layout/fragment_expenses" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="co.asinfotech.mymoneymanager.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_savings"
+        android:name="co.asinfotech.mymoneymanager.ui.fragments.savings.SavingsFragment"
+        android:label="@string/menu_savings"
+        tools:layout="@layout/fragment_savings" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="co.asinfotech.mymoneymanager.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_earnings"
+        android:name="co.asinfotech.mymoneymanager.ui.fragments.earnings.EarningsFragment"
+        android:label="@string/menu_earnings"
+        tools:layout="@layout/fragment_earnings" />
 </navigation>
