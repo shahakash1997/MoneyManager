@@ -1,34 +1,49 @@
 package co.asinfotech.mymoneymanager.ui.activities
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import co.asinfotech.mymoneymanager.R
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import co.asinfotech.mymoneymanager.ui.theme.MyApplicationTheme
 
-class MainActivity : AppCompatActivity() {
-    private val handler: Handler = Handler(Looper.getMainLooper())
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContent {
+            MyApplicationTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting("Android")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Greeting(name: String) {
+    Column() {
+        Text(text = "Hello $name!")
+        Text(text = "Hello $name!")
     }
 
-    override fun onStart() {
-        super.onStart()
+}
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        handler.postDelayed(
-            { startActivity(Intent(this@MainActivity, LoginActivity::class.java)) },
-            1000
-        )
-
-    }
-
-    companion object {
-        private const val TAG = "MainActivity"
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    MyApplicationTheme {
+        Greeting("Android")
     }
 }
