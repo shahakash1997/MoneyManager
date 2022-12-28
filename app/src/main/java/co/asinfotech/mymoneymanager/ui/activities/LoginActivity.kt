@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import co.asinfotech.mymoneymanager.AppHomeActivity
 import co.asinfotech.mymoneymanager.config.Config
 import co.asinfotech.mymoneymanager.databinding.ActivityLoginBinding
 import co.asinfotech.mymoneymanager.extensions.showToast
@@ -82,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToNextActivity() {
-        startActivity(Intent(this@LoginActivity, AppHomeActivity::class.java))
+        startActivity(Intent(this@LoginActivity, LoginActivity::class.java))
 
     }
 
