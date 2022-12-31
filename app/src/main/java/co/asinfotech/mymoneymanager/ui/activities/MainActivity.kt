@@ -1,11 +1,12 @@
 package co.asinfotech.mymoneymanager.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -20,20 +21,37 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting("Android", onClicked = {
+                        startNewActivity()
+                    })
                 }
             }
         }
     }
+
+    fun startNewActivity() {
+        val intent = Intent(this, TestComposeActivity::class.java)
+        startActivity(intent)
+    }
+
 }
 
+
 @Composable
-fun Greeting(name: String) {
-    Column() {
+fun Greeting(name: String, onClicked: () -> Unit) {
+    Column {
+        Button(onClick = {
+            onClicked()
+        }) {
+
+            Text(text = "Navigate")
+
+        }
         Text(text = "Hello $name!")
         Text(text = "Hello $name!")
     }
@@ -44,6 +62,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
-        Greeting("Android")
+        Greeting("Android", onClicked = {})
     }
 }
